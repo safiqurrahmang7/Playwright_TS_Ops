@@ -15,7 +15,7 @@ export default defineConfig({
   },
   reporter:'html',
   use:{
-    baseURL:process.env.BASE_URL,
+    baseURL:"https://rahulshettyacademy.com/client",
     // connectOptions:{
     //   wsEndpoint:process.env.PLAYWRIGHT_SERVICE_URL!,
     // },
