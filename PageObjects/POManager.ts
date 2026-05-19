@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import LoginPage from "./LoginPage";
 import Dashboardpage from "./Dashboard";
-import CartPage from "./cartPage";
+import CartPage from "./CartPage";
 import CheckoutPage from "./CheckoutPage";
 
 
