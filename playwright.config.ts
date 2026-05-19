@@ -15,11 +15,11 @@ export default defineConfig({
   },
   reporter:'html',
   use:{
-    baseURL:"https://rahulshettyacademy.com/client",
+    baseURL:"https://rahulshettyacademy.com/",
     // connectOptions:{
     //   wsEndpoint:process.env.PLAYWRIGHT_SERVICE_URL!,
     // },
-    headless:false,
+    headless:true,
     screenshot:'only-on-failure',
     trace:'retain-on-failure',
     video: 'retain-on-failure',
