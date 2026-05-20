@@ -29,4 +29,31 @@ test("Buy a Product", async ({page})=>{
     const checkoutPage = poManager.getCheckoutPage();
     await checkoutPage.fillTheRequiredFields(input,option,cvvCode,nameOnCard);
     await checkoutPage.clickPlaceOrderButton();
-})
+});
+
+test("Buy a Product @smoke", async ({page})=>{
+    
+    const {productName} = productData;
+    const {input,option,cvvCode,nameOnCard} = CheckoutData;
+    const poManager = new POManager(page);
+    const loginPage = poManager.getLoginPage();
+    
+
+    await loginPage.gotoUrl("/client/#/dashboard/dash");
+
+    //dasboardpage
+    const dasboardpage = poManager.getDashboardPage();
+    await dasboardpage.searchAndAddToCart(productName);
+    await dasboardpage.clickCartBtn();
+    
+    //cart page
+
+    const cartPage = poManager.getCartPage();
+    await cartPage.validateAddedProduct(productName);
+    await cartPage.clickCheckoutButton();
+
+    const checkoutPage = poManager.getCheckoutPage();
+    await checkoutPage.fillTheRequiredFields(input,option,cvvCode,nameOnCard);
+    await checkoutPage.clickPlaceOrderButton();
+});
+

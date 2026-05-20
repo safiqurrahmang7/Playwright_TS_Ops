@@ -1,5 +1,10 @@
 import {defineConfig} from '@playwright/test';
 
+const authFile = /auth\.spec\.ts/;
+const browserProjectDefaults = {
+  dependencies:['setup auth'],
+  testIgnore:authFile,
+};
 
 export default defineConfig({
 
@@ -26,12 +31,12 @@ export default defineConfig({
   projects:[
     {
       name:'setup auth',
-      testMatch:/auth\.spec\.ts/,
+      testMatch:authFile,
     },
     {
       name:'Chrome',
-      dependencies:['setup auth'],
-      testIgnore:/auth\.spec\.ts/,
+      ...browserProjectDefaults,
+      
       use:{
         browserName:'chromium',
         storageState:'auth/chromium.json'
@@ -40,8 +45,7 @@ export default defineConfig({
     },
     {
       name:'Firefox',
-      dependencies:['setup auth'],
-      testIgnore:/auth\.spec\.ts/,
+      ...browserProjectDefaults,
       use:{
         browserName:'firefox',
         storageState:'auth/firefox.json'
@@ -49,8 +53,7 @@ export default defineConfig({
     },
     {
       name:'Edge',
-      dependencies:['setup auth'],
-      testIgnore:/auth\.spec\.ts/,
+      ...browserProjectDefaults,
       use:{
          channel: 'msedge',
          browserName: 'chromium',
