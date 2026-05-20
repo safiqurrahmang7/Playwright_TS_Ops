@@ -47,7 +47,6 @@ test("Buy a Product @smoke", async ({page})=>{
     await dasboardpage.clickCartBtn();
     
     //cart page
-
     const cartPage = poManager.getCartPage();
     await cartPage.validateAddedProduct(productName);
     await cartPage.clickCheckoutButton();
