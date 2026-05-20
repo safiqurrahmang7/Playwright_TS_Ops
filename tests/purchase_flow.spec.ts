@@ -13,7 +13,7 @@ test("Buy a Product", async ({page})=>{
     const loginPage = poManager.getLoginPage();
     
 
-     //await loginPage.gotoUrl("/client/#/dashboard/dash");
+    await loginPage.gotoUrl("/client/#/dashboard/dash");
 
     //dasboardpage
     const dasboardpage = poManager.getDashboardPage();
