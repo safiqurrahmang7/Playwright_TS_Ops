@@ -16,7 +16,6 @@ export default defineConfig({
   reporter:'html',
   use:{
     baseURL:"https://rahulshettyacademy.com/",
-    
     headless:true,
     screenshot:'only-on-failure',
     trace:'retain-on-failure',
