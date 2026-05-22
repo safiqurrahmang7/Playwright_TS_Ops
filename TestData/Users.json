@@ -1,4 +1,12 @@
-{
+[{
     "email": "Safiqurrahmang7@gmail.com",
     "password":"Test@123"
-}
+},
+{
+    "email":"safiqtest@mailinator.com",
+    "password":"Test@123"
+},
+{
+    "email":"safiqur@mailinator.com",
+    "password":"Test@123"
+}]

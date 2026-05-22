@@ -1,10 +1,6 @@
-import {defineConfig} from '@playwright/test';
+import {defineConfig, devices} from '@playwright/test';
 
-const authFile = /auth\.spec\.ts/;
-const browserProjectDefaults = {
-  dependencies:['setup auth'],
-  testIgnore:authFile,
-};
+
 
 export default defineConfig({
 
@@ -16,6 +12,7 @@ export default defineConfig({
   expect:{
     timeout:10000
   },
+  retries:1,
   reporter:'html',
   use:{
     baseURL:"https://rahulshettyacademy.com/",
@@ -26,39 +23,42 @@ export default defineConfig({
     screenshot:'only-on-failure',
     trace:'retain-on-failure',
     video: 'retain-on-failure',
+    launchOptions:{
+      args:['--start-maximized']
+    },
+    viewport:null
   },
 
   projects:[
+
     {
-      name:'setup auth',
-      testMatch:authFile,
+      name: 'api',
+      testMatch: /.*api.*\.spec\.ts/
     },
     {
       name:'Chrome',
-      ...browserProjectDefaults,
-      
       use:{
         browserName:'chromium',
-        storageState:'auth/chromium.json'
-        
-      }
+                
+      },
+      testMatch: /.*ui.*\.spec\.ts/
     },
     {
       name:'Firefox',
-      ...browserProjectDefaults,
       use:{
-        browserName:'firefox',
-        storageState:'auth/firefox.json'
-      }
+        ...devices['Desktop Firefox'],
+        browserName:'firefox'
+        
+      },
+      testMatch: /.*ui.*\.spec\.ts/
     },
     {
       name:'Edge',
-      ...browserProjectDefaults,
       use:{
          channel: 'msedge',
          browserName: 'chromium',
-         storageState:'auth/MSEdge.json'
       },
+      testMatch: /.*ui.*\.spec\.ts/
     }
   ]
 })
