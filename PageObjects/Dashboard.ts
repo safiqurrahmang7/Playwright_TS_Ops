@@ -1,5 +1,6 @@
 import {expect, Locator, Page} from '@playwright/test';
 
+
 export default class Dashboardpage{
 
     readonly _page:Page;
@@ -13,10 +14,7 @@ export default class Dashboardpage{
     }
 
     async searchAndAddToCart(productName:string){
-        await this._cardBody
-            .filter({hasText:productName})
-            .getByRole('button',{name:"Add To Cart"})
-            .waitFor();
+        
         await this._cardBody
             .filter({hasText:productName})
             .getByRole('button',{name:"Add To Cart"})
@@ -25,7 +23,11 @@ export default class Dashboardpage{
 
     async clickCartBtn(){
 
-        await this._cartBtn.click();
-        await this._page.waitForLoadState('networkidle')
+        await Promise.all([
+            this._cartBtn.click(),
+            expect(this._page).toHaveURL(/cart/)
+        ]);
+        
+        
     }
 }
