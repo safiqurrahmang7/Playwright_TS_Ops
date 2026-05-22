@@ -16,9 +16,6 @@ export default defineConfig({
   reporter:'html',
   use:{
     baseURL:"https://rahulshettyacademy.com/",
-    // connectOptions:{
-    //   wsEndpoint:process.env.PLAYWRIGHT_SERVICE_URL!,
-    // },
     headless:true,
     screenshot:'only-on-failure',
     trace:'retain-on-failure',
